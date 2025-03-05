@@ -131,6 +131,25 @@ sudo vim /etc/fstab
 # comment the line which starts with **swap.img**.
 ```
 
+### Fix resolve.conf
+> Having resolve.conf point to 127.0.0.1 creates a loopback for coreDNS
+
+```bash
+sudo rm /etc/resolv.conf
+
+cat <<EOF | sudo tee /etc/resolv.conf
+nameserver <NAMESERVER 1 IP>
+nameserver <NAMESERVER 1 IP>
+options <INTERFACE NAME> trust-ad
+search <YOUR DOMAIN>
+EOF
+```
+
+```bash
+sudo mkdir -p /run/systemd/resolve
+sudo ln -s /etc/resolv.conf /run/systemd/resolve/resolv.conf
+```
+
 ### On the Control Plane server
 
 > Initialize the cluster by passing the cidr value and the value will depend on the type of network CLI you choose.
