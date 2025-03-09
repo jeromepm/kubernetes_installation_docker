@@ -204,6 +204,11 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl get nodes
 ```
 
+### Installing Cert manager
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.17.0/cert-manager.yaml
+```
+
 ### On each of Data plane node
 
 > Joining the node to the cluster:
