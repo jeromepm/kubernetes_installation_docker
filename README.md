@@ -191,6 +191,12 @@ kubectl create -f custom-resources.yaml
 
 ```
 
+> Enable the control plane to to host pods
+
+```
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
+
 > Check the nodes
 
 ```bash
